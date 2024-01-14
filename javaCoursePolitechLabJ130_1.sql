@@ -24,7 +24,9 @@ CREATE TABLE store.orders (
     order_status CHAR(1),
     order_shipment DATE,
     CONSTRAINT check_order_status CHECK(order_status IN ('P', 'S', 'C')),
-    CONSTRAINT check_order_shipment CHECK(order_status = 'S' and order_shipment IS NOT NULL or order_status != 'S' and order_shipment IS NULL),
+    CONSTRAINT check_order_shipment CHECK(
+		order_status = 'S' AND order_shipment IS NOT NULL OR order_status != 'S' AND order_shipment IS NULL
+	),
     CONSTRAINT check_customer_phone CHECK(customer_phone != ''),
     CONSTRAINT check_customer_email CHECK(customer_email != '')
 ) COLLATE utf8mb4_unicode_ci;
