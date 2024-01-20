@@ -122,12 +122,17 @@ ORDER BY 'Заказ';
 */
 
 /* запрос, фиксирующий отгрузку заказа с id=5. Должен менять статус, фиксировать дату, уменьшать остаток на складе.
+
+   Данный запрос выдает ошибку т.к. некоторые позиции заказа отсутствуют на складе.
+   При необходимости формирования заказа с отсутствующими позициями - раскомментировать указанную строку.
+
 UPDATE orders o
     JOIN position p ON o.order_id = p.order_id
         AND p.order_id = 5
     JOIN products pr ON pr.article = p.article
-        AND p.amount <= pr.stock_balance
+--        AND p.amount <= pr.stock_balance   -- раскомментировать для проверки количества товара на складе перед изменением
 SET order_status = 'S',
     order_shipment = CURDATE(),
-    pr.stock_balance = pr.stock_balance - p.amount
+    pr.stock_balance = pr.stock_balance - p.amount;
  */
+
