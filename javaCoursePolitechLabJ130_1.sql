@@ -16,7 +16,7 @@ CREATE TABLE products (
 ) COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE orders (
-                        order_id INT PRIMARY KEY NOT NULL,
+                        order_id INT PRIMARY KEY AUTO_INCREMENT,
                         order_create DATE NOT NULL,
                         customer_name VARCHAR(100) NOT NULL,
                         customer_phone VARCHAR(50),
@@ -51,13 +51,13 @@ INSERT INTO products VALUES
                          ('3251619', 'Стул столовый с высокой спинкой', 'белый', 3500, 37),
                          ('3251620', 'Стул столовый с высокой спинкой', 'коричневый', 3500, 52);
 
-INSERT INTO orders VALUES
-                       (1, '2020-11-20', 'Сергей Иванов', '(981)123-45-67', NULL, 'ул. Веденеева, 20-1-41', 'S', '2020-11-29'),
-                       (2, '2020-11-22', 'Алексей Комаров', '(921)001-22-33', NULL, 'пр. Пархоменко 51-2-123', 'S', '2020-11-29'),
-                       (3, '2020-11-28', 'Ирина Викторова', '(911)009-88-77', NULL, 'Тихорецкий пр. 21-21', 'P', NULL),
-                       (4, '2020-12-03', 'Павел Николаев', NULL, 'pasha_nick@mail.ru', 'ул. Хлопина 3-88', 'P', NULL),
-                       (5, '2020-12-03', 'Антонина Васильева', '(931)777-66-55', 'antvas66@gmail.com', 'пр. Науки, 11-3-9', 'P', NULL),
-                       (6, '2020-12-10', 'Ирина Викторова', '(911)009-88-77', NULL, 'Тихорецкий пр. 21-21', 'P', NULL);
+INSERT INTO orders (order_create, customer_name, customer_phone, customer_email, customer_address, order_status, order_shipment) VALUES
+                       ('2020-11-20', 'Сергей Иванов', '(981)123-45-67', NULL, 'ул. Веденеева, 20-1-41', 'S', '2020-11-29'),
+                       ('2020-11-22', 'Алексей Комаров', '(921)001-22-33', NULL, 'пр. Пархоменко 51-2-123', 'S', '2020-11-29'),
+                       ('2020-11-28', 'Ирина Викторова', '(911)009-88-77', NULL, 'Тихорецкий пр. 21-21', 'P', NULL),
+                       ('2020-12-03', 'Павел Николаев', NULL, 'pasha_nick@mail.ru', 'ул. Хлопина 3-88', 'P', NULL),
+                       ('2020-12-03', 'Антонина Васильева', '(931)777-66-55', 'antvas66@gmail.com', 'пр. Науки, 11-3-9', 'P', NULL),
+                       ('2020-12-10', 'Ирина Викторова', '(911)009-88-77', NULL, 'Тихорецкий пр. 21-21', 'P', NULL);
 
 INSERT INTO position VALUES
                          (1, '3251616', 7500, 1),
